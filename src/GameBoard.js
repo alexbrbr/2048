@@ -45,6 +45,15 @@ class GameBoard extends Component {
           .map(moveLineToLeft);
           newTiles = [].concat.apply([], newTiles);
         break;
+      case 'Right' :
+        newTiles = [0,1,2,3]
+          .map(rowIndex => {
+            return this.state.tiles
+              .filter(tile => tile.y === rowIndex)
+          })
+          .map(moveLineToRight);
+          newTiles = [].concat.apply([], newTiles);
+        break;
       default:
         newTiles = this.state.tiles;
     }

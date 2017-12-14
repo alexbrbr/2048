@@ -45,7 +45,7 @@
     "build": "node scripts/build.js",
     "test": "jest --watchAll",
     "coverage": "jest --coverage",
-    "debug-test": "node --inspect-brk node_modules/.bin/jest --runInBand"
+    "debug-test": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",

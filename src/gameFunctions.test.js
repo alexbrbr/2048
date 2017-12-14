@@ -347,6 +347,51 @@ describe('move line to left', () => {
         value: ''
     }]);
   });
+
+  it('line has 4 values, grouped by 2, should merge them', () => {
+
+    const line = [{
+        x: 0,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 4
+    }];
+
+    expect(moveLineToLeft(line)).toEqual([{
+        x: 0,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 2,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 3,
+        y: 0,
+        value: ''
+    }]);
+  });
 });
 
 describe('move line to right', () => {
@@ -416,6 +461,50 @@ describe('move line to right', () => {
         x: 3,
         y: 0,
         value: 2
+    }]);
+  });
+
+  it('line with 3 value, should put it on the right', () => {
+    const line = [{
+        x: 0,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 3,
+        y: 0,
+        value: ''
+    }];
+
+    expect(moveLineToRight(line)).toEqual([{
+        x: 0,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 1,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 4
     }]);
   });
 });

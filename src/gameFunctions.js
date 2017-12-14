@@ -31,15 +31,25 @@ function moveLineToLeft(line) {
       return line;
     }
   }
-  if (valuesInLine === 3) {
+  if (valuesInLine >= 3) {
     const values = line.map(tile => tile.value);
     const uniqueValues = [...new Set(values)];
-    console.log('uniqueValues', uniqueValues);
     if (uniqueValues.length === 4) { // 4 including ''
       return line
         .map((tile, index) => Object.assign({}, tile, {value: uniqueValues[index]}));
     }
-    if (uniqueValues.length === 3) { // 3 including ''
+    else { // 3 including ''
+      for (let i = 0; i < values.length; i += 1) {
+        if (values[i] === values[i+1]) {
+          values[i] = values[i] * 2 || '';
+          values[i+1] = '';
+        }
+      }
+
+      const uniqueValues = values.filter(v => v !== '');
+
+      return line
+       .map((tile, index) => Object.assign({}, tile, {value: uniqueValues[index] || ''}));
     }
   }
 
