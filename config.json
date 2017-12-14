@@ -1,0 +1,4 @@
+{
+  "testRegex": "./src/gameFunctions.test.js",
+  "testEnvironment": "node"
+}
