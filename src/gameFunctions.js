@@ -1,4 +1,14 @@
 function moveLineToLeft(line) {
+  const lineIsFull = line.filter(tile => tile.value !== '').length === 4;
+  if (
+    lineIsFull &&
+    line[0].value !== line[1].value &&
+    line[1].value !== line[2].value &&
+    line[2].value !== line[3].value
+  ) {
+    return line;
+  }
+
   const valuesInLine = line.filter(tile => tile.value !== '').length;
   if (valuesInLine === 0) {
     return line;
@@ -35,6 +45,10 @@ function moveLineToLeft(line) {
     const values = line.map(tile => tile.value);
     const uniqueValues = [...new Set(values)];
     if (uniqueValues.length === 4) { // 4 including ''
+      if (uniqueValues.findIndex(val => val === '')) {
+        uniqueValues.splice(uniqueValues.findIndex(val => val === ''), 1);
+        uniqueValues.push('');
+      }
       return line
         .map((tile, index) => Object.assign({}, tile, {value: uniqueValues[index]}));
     }
@@ -43,6 +57,10 @@ function moveLineToLeft(line) {
         if (values[i] === values[i+1]) {
           values[i] = values[i] * 2 || '';
           values[i+1] = '';
+        } else if (values[i+1] === '' && values[i] === values[i+2]) {
+          values[i] = values[i] * 2 || '';
+          values[i+1] = '';
+          values[i+2] = '';
         }
       }
 
@@ -57,6 +75,16 @@ function moveLineToLeft(line) {
 };
 
 function moveLineToRight(line) {
+  const lineIsFull = line.filter(tile => tile.value !== '').length === 4;
+  if (
+    lineIsFull &&
+    line[0].value !== line[1].value &&
+    line[1].value !== line[2].value &&
+    line[2].value !== line[3].value
+  ) {
+    return line;
+  }
+
   const movedToLeftLine = moveLineToLeft(line);
   const valuesToRight = movedToLeftLine
     .map(tile => tile.value)

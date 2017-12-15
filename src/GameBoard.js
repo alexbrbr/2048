@@ -16,7 +16,10 @@ class GameBoard extends Component {
     const randomTile = possibleTiles[Math.floor(Math.random() * possibleTiles.length)];
 
     if (!randomTile) {
-      // game over
+      alert('you lost');
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
       return false;
     }
 

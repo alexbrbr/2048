@@ -303,6 +303,96 @@ describe('move line to left', () => {
     }]);
   });
 
+  it('line has 4 different values, should put values them on the left and empty right', () => {
+
+    const line = [{
+        x: 0,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 2,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 2
+    }];
+
+    expect(moveLineToLeft(line)).toEqual([{
+        x: 0,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 3,
+        y: 0,
+        value: ''
+    }]);
+  });
+
+  it('line has 4 values, 3 different, should change nothing', () => {
+
+    const line = [{
+        x: 0,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 2
+    }];
+
+    expect(moveLineToLeft(line)).toEqual([{
+        x: 0,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 2
+    }]);
+  });
+
   it('line has 3 different values already on left, should do nothing', () => {
 
     const line = [{
@@ -505,6 +595,95 @@ describe('move line to right', () => {
         x: 3,
         y: 0,
         value: 4
+    }]);
+  });
+
+  it('line with 3 value, should put it on the right', () => {
+    const line = [{
+        x: 0,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 2,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 2
+    }];
+
+    expect(moveLineToRight(line)).toEqual([{
+        x: 0,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 1,
+        y: 0,
+        value: ''
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 4
+    }]);
+  });
+
+  it('line has 4 values, 3 different, should change nothing', () => {
+
+    const line = [{
+        x: 0,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 2
+    }];
+
+    expect(moveLineToRight(line)).toEqual([{
+        x: 0,
+        y: 0,
+        value: 2
+      },
+      {
+        x: 1,
+        y: 0,
+        value: 8
+      },
+      {
+        x: 2,
+        y: 0,
+        value: 4
+      },
+      {
+        x: 3,
+        y: 0,
+        value: 2
     }]);
   });
 });
